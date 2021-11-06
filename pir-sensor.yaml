@@ -1,0 +1,2 @@
+name: PIR sensor MQTT
+entrypoint: pir-sensor.toit
