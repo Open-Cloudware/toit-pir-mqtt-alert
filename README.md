@@ -1,2 +1,5 @@
 # Toit and ESP32: MQTT based motion alert system
-Detecting movements with PIR sensor and sending a MQTT message. Another device will receive it and glow an LED if motion is detected
+
+Detects movements with a PIR sensor and sends a MQTT message.
+
+Another device receives it and turns on an LED if motion is detected.

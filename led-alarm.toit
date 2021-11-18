@@ -18,7 +18,7 @@ TOPIC     ::= "toit/sensor/pir"
 main:
   led := gpio.Pin LED --output
   socket := net.open.tcp_connect HOST PORT
-  // Connect the Toit MQTT client to the broker
+  // Connect the Toit MQTT client to the broker.
   client := mqtt.Client
     CLIENT_ID
     mqtt.TcpTransport socket

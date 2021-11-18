@@ -18,7 +18,7 @@ TOPIC     ::= "toit/sensor/pir"
 main:
   pir ::= gpio.Pin PIR_SENSOR --input
   socket := net.open.tcp_connect HOST PORT
-  // Connect the Toit MQTT client to the broker
+  // Connect the Toit MQTT client to the broker.
   client := mqtt.Client
     CLIENT_ID
     mqtt.TcpTransport socket
@@ -27,21 +27,21 @@ main:
   print "Connected to MQTT Broker @ $HOST:$PORT"
 
   while true:
-    // Wait till movement is detected (high sensor output)
+    // Wait till movement is detected (high sensor output).
     pir.wait_for 1
     print "Motion detected! Time: $(Time.now) UTC"
     publish client true
 
-    // Wait till no more movement is detected (low sensor output)
+    // Wait till no more movement is detected (low sensor output).
     pir.wait_for 0
     publish client false
 
 publish client/mqtt.Client payload/bool:
   // Publish message to topic
   client.publish
-    TOPIC 
+    TOPIC
     json.encode {
       "value": payload
     }
     --retain=true
-  // print "Published message `$payload` on '$TOPIC'" 
+  // print "Published message `$payload` on '$TOPIC'"
